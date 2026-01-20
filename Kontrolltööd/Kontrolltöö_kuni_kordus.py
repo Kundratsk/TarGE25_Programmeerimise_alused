@@ -21,7 +21,7 @@ def main():
 
     eelmine = tervitus(sugu, vanus)
 
-    for _ in range(10):
+    for i in range(10):
         praegune = tervitus(sugu, vanus)
 
         if praegune != eelmine:
@@ -33,3 +33,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
