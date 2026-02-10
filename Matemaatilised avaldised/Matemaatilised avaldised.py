@@ -46,4 +46,3 @@ def usd_to_eur(dollar):
     :return:
     """
     return dollar * 0.8
-
