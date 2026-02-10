@@ -5,17 +5,17 @@ vaja programmi, mis arvutab"""
 from threading import main_thread
 
 
-def calculate_budget(guests: int) -> int
+def calculate_budget(guests: int) -> int:
 
     venue_price = 55
-    price_per_quest = 10
-    return place_price + price_per_quest * quests
+    price_per_guest = 10
+    return venue_price + price_per_guest * guests
 
 
-if __name__ '__main__':
-    invited_quests = int(input("Mitu inimest on peole kutsutud? "))
-    confirmed_quests = int(input("Mitu inimest tuleb? "))
-    min_budget = calculate_budget(confirmed_quests)
-    max_budget = calculate_budget(invited_quests)
+if __name__ == '__main__':
+    invited_guests = int(input("Mitu inimest on peole kutsutud? "))
+    confirmed_guests = int(input("Mitu inimest juba tuleb? "))
+    min_budget = calculate_budget(confirmed_guests)
+    max_budget = calculate_budget(invited_guests)
     print(f"Maksimaalne eelarve on {max_budget} eurot")
     print(f"Minimaalne eelarve on {min_budget} eurot")

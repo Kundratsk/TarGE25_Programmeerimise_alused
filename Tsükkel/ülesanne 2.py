@@ -1,3 +1,4 @@
+
 """Koosta programm, mis küsib kasutajalt 10 korda arve ja väljastab seejärel nende arvude summa.
 Täienda seda programmi nii, et kasutajalt küsitakse arve seni, kuni kasutaja enam uut
 arvu ei sisesta, vaid vajutab lihtsalt sisestusklahvi. Proovige seda ülesannet lahendada nii while-
@@ -25,7 +26,7 @@ def solve_infinite_sum():
     total = 0
     count = 0
     while True:
-        text_input = input(f"WHILE Sisesta {count + 1}, arv: ")
+        text_input = input(f" Sisesta {count + 1}, arv: ")
         if not text_input.isnumeric():
             break
         number = float(text_input)
@@ -36,5 +37,5 @@ def solve_infinite_sum():
 
 if __name__ == '__main__':
     #solve_using_for()
-    #solve_using_while()
-    solve_infinite_sum()
+    solve_using_while()
+    #solve_infinite_sum()
