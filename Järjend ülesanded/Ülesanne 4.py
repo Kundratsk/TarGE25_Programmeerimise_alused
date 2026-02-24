@@ -28,7 +28,7 @@ answers = [
 ]
 
 def ask_magic_eight_ball():
-    queation = input("Palun sisesta oma Jah/ei küsimus ennustajale:")
+    question = input("Palun sisesta oma Jah/ei küsimus ennustajale:")
     random_number = randint(0, len(answers)-1)
     return answers[random_number]
 
