@@ -6,5 +6,3 @@ Sisestage teine arv: 3
 Sisestage tehe: +
 Tulemus: auh auh auh auh auh """
 
-
-def
