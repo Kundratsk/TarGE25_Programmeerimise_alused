@@ -127,6 +127,12 @@ def main():
                     name = input("Nimi: ")
                     add_contact(phonebook, name, number)
 
+        elif choice == "4":
+            show_phonebook(phonebook)
+
+        elif choice == "5":
+            break
+
 
 
 if __name__ == '__main__':
