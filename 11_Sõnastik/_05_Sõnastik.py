@@ -1,6 +1,6 @@
 """Koosta programm, mis programmi käivitamisel tervitab kasutajat nii tavakeeles kui morse koodina, lubab
 seejärel kasutajal sisestada sõnu ning teisendab need sümbolhaaval morsetähestikku (lisades iga sümboli
-järele tühiku). Sõnastik ei pruugi sisaldada kõikvõimalikke märke, seega tuleb iga sümboli puhul kontrollida,
+järele tühiku). 11_Sõnastik ei pruugi sisaldada kõikvõimalikke märke, seega tuleb iga sümboli puhul kontrollida,
 kas see üldse esineb sõnastikus. Tähe registrit ehk suur- ja väiketähti ei eristata. Samuti tuleb otsustada, mida
 ette võtta nende tähtedega, mida inglise tähestikus pole (näiteks "õ", "ä" jne): ignoreerida või mõned neist teisendada
 (näiteks "õ" -> "o" vms).

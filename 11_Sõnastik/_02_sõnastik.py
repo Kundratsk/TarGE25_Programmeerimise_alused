@@ -14,3 +14,4 @@ if __name__ == '__main__':
     print(f"kass -> inglise keeles: {est_eng_dict ["kass"]}")
     print(f"üks -> itaalia keeles: {est_ita_dict ["üks"]}")
     print(f"Kolm -> inglise keeles: {est_eng_dict ["kolm"]}")
+
