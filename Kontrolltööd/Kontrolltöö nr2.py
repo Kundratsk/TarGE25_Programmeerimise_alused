@@ -30,8 +30,11 @@ def load_phonebook():
     Returns dictionary with name as key and phone number as value.
     """
     if os.path.exists(FILE_NAME):
-        with open(FILE_NAME, "r", encoding='utf-8') as file:
-            return json.load(file)
+        try:
+            with open(FILE_NAME, "r", encoding='utf-8') as file:
+                return json.load(file)
+        except json.JSONDecodeError:
+            return {}  # kui fail on tühi või vigane
     return {}
 
 

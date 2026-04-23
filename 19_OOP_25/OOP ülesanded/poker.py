@@ -1,4 +1,5 @@
 """Simple Poker implementation."""
+from itertools import count
 
 
 class Card:
@@ -124,8 +125,20 @@ class Hand:
 
         In a flush hand all cards are the same suit. Their number value is not important here.
         """
-        suits = ["diamonds", "clubs", "hearts", "spades"]
-        set(suits)
+        if len(self.cards_in_hand) != 5:
+            return False
+
+        suits = []
+        for card in self.cards_in_hand:
+            suits.append(card.suit)
+
+        if len(set(suits)) != 1:
+            return False
+
+        return True
+
+
+
 
     def is_straight_flush(self):
         """
@@ -134,7 +147,23 @@ class Hand:
         Such a hand is both straight and flush at the same time.
 
         """
-        raise NotImplementedError
+        if len(self.cards_in_hand) != 5:
+            return False
+
+        sorted_cards = sorted(self.cards_in_hand, key=lambda x: x.value)
+
+        for i in range(len(sorted_cards) - 1):
+            if sorted_cards[i + 1].value != sorted_cards[i].value + 1:
+                return False
+
+        suits = []
+        for card in self.cards_in_hand:
+            suits.append(card.suit)
+
+        if len(set(suits)) != 1:
+            return False
+
+        return True
 
     def is_full_house(self):
         """
@@ -145,7 +174,18 @@ class Hand:
         2 2 2 6 6
         K J K J K
         """
-        raise NotImplementedError
+        counts = {}
+        for card in self.cards_in_hand:
+            counts[card.value] = counts.get(card.value, 0) + 1
+
+        return sorted(counts.values()) == [2, 3]
+
+
+
+
+
+
+
 
     def is_four_of_a_kind(self):
         """
