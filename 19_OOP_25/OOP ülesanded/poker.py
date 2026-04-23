@@ -104,12 +104,12 @@ class Hand:
         You can always consider A to be the highest ranked card.
         """
         # 1. Kontrolli, et käes on täpselt 5 kaarti (straight eeldus tavaliselt)
-        if len(self.cards) != 5:
+        if len(self.cards_in_hand) != 5:
             return False
 
         # 2. Sorteeri kaardid väärtuse järgi
         # Eeldame, et card.value on int (nt 2-14)
-        sorted_cards = sorted(self.cards, key=lambda x: x.value)
+        sorted_cards = sorted(self.cards_in_hand, key=lambda x: x.value)
 
         # 3. Kontrolli, kas iga kaart on eelmisest ühe võrra suurem
         for i in range(len(sorted_cards) - 1):
@@ -124,7 +124,8 @@ class Hand:
 
         In a flush hand all cards are the same suit. Their number value is not important here.
         """
-        raise NotImplementedError
+        suits = ["diamonds", "clubs", "hearts", "spades"]
+        set(suits)
 
     def is_straight_flush(self):
         """
