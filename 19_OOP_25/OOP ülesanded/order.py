@@ -145,7 +145,8 @@ class ContainerAggregator:
 
         :param container_volume: Volume of each container created by this aggregator.
         """
-        pass
+        self.container_volume = container_volume
+        self.not_used_orders = []
 
     def prepare_containers(self, orders: tuple) -> dict:
         """
@@ -156,6 +157,7 @@ class ContainerAggregator:
         :param orders: tuple of orders.
         :return: dict where keys are destinations and values are containers to that destination with orders.
         """
+
         return {}
 
 
