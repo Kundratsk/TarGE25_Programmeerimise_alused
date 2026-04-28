@@ -56,7 +56,10 @@ class Order:
 
         :return: Total volume (cm^3) as int.
         """
-        return sum(item.quantity * item.one_item_volume for item in self.order_items)
+        total = 0
+        for item in self.order_items:
+            total += item.quantity
+        return total
 
 
 
@@ -64,14 +67,14 @@ class Container:
     """Container to transport orders."""
 
     # define constructor
-    def __init__(self, max_volume: int):
+    def __init__(self, volume: int, orders: list[Order]):
         """
         Konteineri konstruktor
 
         :param volume: Konteineri maksimaalne maht kuupmeetrites
         """
-        self.max_volume = max_volume
-        self.orders = []
+        self.volume = volume
+        self.orders = orders
     # define volume left property method
     @property
     def volume_left(self) -> int:
@@ -79,9 +82,10 @@ class Container:
         Arvutab ja tagastab, kui palju ruumi on konteineris veel vaba.
         Valem: konteineri maht - kõigi tellimuste summeeritud maht
         """
-        total_orders_volume = sum(order.total_volume() for order in self.orders)
-
-        return self.volume - total_orders_volume
+        order_volume = 0
+        for order in self.orders:
+            order_volume += order.total_volume
+        return self.volume - order_volume
 
 
 class OrderAggregator:
