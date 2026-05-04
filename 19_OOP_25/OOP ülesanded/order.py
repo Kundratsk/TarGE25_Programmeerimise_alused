@@ -39,6 +39,7 @@ class Order:
         :param order_items: list of order items.
         """
         self.order_items = order_items
+        self.destination = None
 
     @property
     def total_quantity(self) -> int:
@@ -58,7 +59,7 @@ class Order:
         """
         total = 0
         for item in self.order_items:
-            total += item.quantity
+            total += item.total_volume
         return total
 
 
@@ -130,7 +131,7 @@ class OrderAggregator:
                     items.append(item)
                     # Kui mahub, siis lisame ja uuendame numbreid
                     current_quantity += item.quantity
-                    current_volume += item.one_item_volume
+                    current_volume += item.total_volume
                     # Eemaldame nimekirjast, et testi lõpus oleks len() õige
                     self.order_items.remove(item)
         return Order(items)
@@ -157,8 +158,37 @@ class ContainerAggregator:
         :param orders: tuple of orders.
         :return: dict where keys are destinations and values are containers to that destination with orders.
         """
+        result = {}
 
-        return {}
+        for order in orders:
+            destination = getattr(order, "destination", None)
+
+            # kui order on liiga suur
+            if order.total_volume > self.container_volume:
+                self.not_used_orders.append(order)
+                continue
+
+            placed = False
+
+            # kui destination juba olemas
+            if destination in result:
+                for container in result[destination]:
+                    if container.volume_left >= order.total_volume:
+                        container.orders.append(order)
+                        placed = True
+                        break
+
+            # kui ei mahtunud
+            if not placed:
+                new_container = Container(self.container_volume, [order])
+
+                # lisa destination ainult siis kui container tekib
+                if destination not in result:
+                    result[destination] = []
+
+                result[destination].append(new_container)
+
+        return result
 
 
 if __name__ == '__main__':
